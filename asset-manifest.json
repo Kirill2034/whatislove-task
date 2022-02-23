@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/whatislove-task/static/css/main.db52e712.css",
+    "main.js": "/whatislove-task/static/js/main.511cff1f.js",
+    "index.html": "/whatislove-task/index.html",
+    "main.db52e712.css.map": "/whatislove-task/static/css/main.db52e712.css.map",
+    "main.511cff1f.js.map": "/whatislove-task/static/js/main.511cff1f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db52e712.css",
+    "static/js/main.511cff1f.js"
+  ]
+}
