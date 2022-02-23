@@ -1,0 +1,15 @@
+header {
+    height: 50px;
+    border-bottom: 2px solid #000;
+    display: flex; align-items: center; justify-content: center;
+}
+header a {
+    color:#000;
+    font-size: 18px;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: all .4s;
+}
+header a:hover {
+    font-size: 24px;
+}
