@@ -14,9 +14,14 @@ const Product = () => {
         navigate('/products')
     } 
 
+    const goBack = () => {
+        navigate('/products');
+    }
+
     return (
         <div className="Product container text-center mt-5">
             <div class="d-flex justify-content-around align-items-center mb-5">
+            <button className="btn btn-outline-dark" onClick={goBack}>Вернуться назад</button>
                 <button className="btn btn-outline-info">Редактировать товар</button>
                 <button className="btn btn-danger" onClick={deleteProduct}>Удалить товар</button>
             </div>
