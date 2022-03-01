@@ -6,29 +6,10 @@ import {observer} from 'mobx-react-lite';
 import {Modal} from '../../components/Modal';
 
 const Products = () => {
-    const [inputValueProductName, setInputValueProductName] = useState('');
-    const [inputValueProductImage, setInputValueProductImage] = useState('');
-    const [inputValueProductDetail, setInputValueProductDetail] = useState('');
 
-    const handleChangeProductName = event => {
-        setInputValueProductName(event.target.value);
-    }
-    const handleChangeProductImage = event => {
-        setInputValueProductImage(event.target.value);
-    }
-    const handleChangeProductDetail = event => {
-        setInputValueProductDetail(event.target.value);
-    }
-
-    const onAddProduct = () => {
+    const onSave = (productData) => {
        
-        productsStore.addProduct({
-            id: new Date().getMilliseconds().toString(), 
-            name: inputValueProductName,
-            image: inputValueProductImage,
-            detail: inputValueProductDetail
-        });
-        setInputValueProductName('');
+        productsStore.saveProduct(productData);
     }
 
     return (
@@ -39,14 +20,7 @@ const Products = () => {
             </button>
             <Modal 
                 modalId="staticBackdrop"
-                onChangeProductName={handleChangeProductName}
-                valueProductName={inputValueProductName}
-                onChangeProductImage={handleChangeProductImage}
-                valueProductImage={inputValueProductImage}
-                onChangeProductDetail={handleChangeProductDetail}
-                valueProductDetail={inputValueProductDetail}
-                onAddProduct={onAddProduct}
-                disabled={!inputValueProductName}
+                onSave={onSave}
                 />
             </div>
             <div className="row">

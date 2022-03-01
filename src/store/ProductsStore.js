@@ -15,9 +15,24 @@ class ProductsStore {
         makeAutoObservable(this)
     }
     
-    addProduct(product) {
-        this.products.push(product);
-        console.log(product)
+    addProduct(productData) {
+        const newProduct = {
+            id: new Date().getMilliseconds().toString(),
+            ...productData
+        }
+        this.products.push(newProduct);
+    }
+
+    updateProduct(productData) {
+        this.products = this.products.map(product => product.id === productData.id ? productData : product)
+    }
+
+    saveProduct(productData) {
+        if (productData.id) {
+            this.updateProduct(productData);
+        } else {
+            this.addProduct(productData)
+        }
     }
 
     deleteProductById(productId) {
