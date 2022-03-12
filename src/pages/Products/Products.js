@@ -3,13 +3,24 @@ import React, { useState } from 'react';
 import {NavLink} from 'react-router-dom';
 import {productsStore} from '../../store/ProductsStore';
 import {observer} from 'mobx-react-lite';
-import {Modal} from '../../components/Modal';
+import {Modal} from '../../components/Modal'
+import { Pagination } from '../../components/Pagination';
 
 const Products = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage, setProductsPerPage] = useState(6);
 
     const onSave = (productData) => {
        
         productsStore.saveProduct(productData);
+    }
+
+    const lastProductIndex = currentPage * productsPerPage;
+    const firstProductIndex = lastProductIndex - productsPerPage;
+    const currentProduct = productsStore.products.slice(firstProductIndex, lastProductIndex);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
     }
 
     return (
@@ -24,7 +35,7 @@ const Products = () => {
                 />
             </div>
             <div className="row">
-                {productsStore.products.map(product => (
+                {currentProduct.map(product => (
                     <div key={product.id} className="col-4 mb-4">
                     <NavLink to={`/products/${product.id}`}>
                     
@@ -39,6 +50,11 @@ const Products = () => {
                     </div>
                 ))}
             </div>
+            <Pagination 
+                    productsPerPage={productsPerPage}
+                    totalProducts={productsStore.products.length}
+                    paginate={paginate}
+            />
         </div>
     )
 }
